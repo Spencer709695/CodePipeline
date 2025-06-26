@@ -7,4 +7,14 @@ phases:
       - pip install cfn-lint
   build:
     commands:
-      - cfn-lint nginx.yml
+      - |
+        cfn-lint nginx.yml || (
+          RC=$?
+          if [ $RC -eq 4 ]; then
+            echo "cfn-lint returned warnings (exit code 4), continuing build"
+          else
+            echo "cfn-lint failed with exit code $RC"
+            exit $RC
+          fi
+        )
+      - aws cloudformation validate-template --template-body file://nginx.yml

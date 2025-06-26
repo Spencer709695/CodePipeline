@@ -7,4 +7,4 @@ phases:
       - pip install cfn-lint
   build:
     commands:
-      - cfn-lint nginx-web.yaml
+      - cfn-lint nginx.yml

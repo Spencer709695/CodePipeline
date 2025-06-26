@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: EC2 NGINX website
 
 Parameters:
-  KeyName:
+  KeyName: DevMachine
     Description: Name of existing EC2 KeyPair
     Type: AWS::EC2::KeyPair::KeyName
 
